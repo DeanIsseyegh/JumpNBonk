@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,15 +8,17 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _renderer;
 
+    private bool _isDisabled;
+    
     private float _axisInput;
     private bool _isJumpPressed = true;
 
     private BoxCollider2D _boxCollider2D;
 
-    [SerializeField] private LayerMask _jumpableGround;
+    [SerializeField] private LayerMask jumpableGround;
     
-    [SerializeField] private int _jumpForce = 600;
-    [SerializeField] private int _moveSpeed = 10;
+    [SerializeField] private int jumpForce = 600;
+    [SerializeField] private int moveSpeed = 10;
 
     private void Start()
     {
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (_isDisabled) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _isJumpPressed = true;
@@ -66,11 +70,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector2(_axisInput * _moveSpeed, _rb.velocity.y);
+        if (_isDisabled) return;
+        _rb.velocity = new Vector2(_axisInput * moveSpeed, _rb.velocity.y);
 
         if (_isJumpPressed && IsGrounded())
         {
-            _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+            _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _isJumpPressed = false;
         }
     }
@@ -78,7 +83,12 @@ public class PlayerController : MonoBehaviour
     private bool IsGrounded()
     {
         var bounds = _boxCollider2D.bounds;
-        var raycastHit2D = Physics2D.BoxCast(bounds.center, bounds.size  - new Vector3(0.1f, 0f, 0f), 0, Vector2.down, .1f, _jumpableGround);
+        var raycastHit2D = Physics2D.BoxCast(bounds.center, bounds.size  - new Vector3(0.1f, 0f, 0f), 0, Vector2.down, .1f, jumpableGround);
         return raycastHit2D;
+    }
+
+    public void Disable()
+    {
+        _isDisabled = true;
     }
 }
