@@ -52,11 +52,11 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimation()
     {
         PlayerState playerState;
-        if (!IsGrounded())
+        if (_rb.velocity.y > 0.01f || _rb.velocity.y < -0.01f)
         {
             playerState = PlayerState.jumping;
         }
-        else if (_rb.velocity.x == 0)
+        else if (_rb.velocity.x < 0.01f && _rb.velocity.x > -0.01f)
         {
             playerState = PlayerState.idle;
         }
@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (_isDisabled) return;
+
         _rb.velocity = new Vector2(_axisInput * moveSpeed, _rb.velocity.y);
 
         if (_isJumpPressed && IsGrounded())
