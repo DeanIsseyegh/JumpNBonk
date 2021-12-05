@@ -9,6 +9,7 @@ TagManager:
   - GoldCoin
   - Enemy
   - Spike
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -6,8 +6,7 @@ namespace Movement
     public class FaceDirection : MonoBehaviour
     {
         private SpriteRenderer _renderer;
-
-        private Vector2 lastPos;
+        private Vector2 _lastPos;
 
         private void Awake()
         {
@@ -16,12 +15,12 @@ namespace Movement
 
         private void Start()
         {
-            lastPos = transform.position;
+            _lastPos = transform.position;
         }
 
         private void Update()
         {
-            float xDir = lastPos.x - transform.position.x;
+            float xDir = _lastPos.x - transform.position.x;
             if (xDir > 0)
             {
                 _renderer.flipX = false;
@@ -30,7 +29,7 @@ namespace Movement
             {
                 _renderer.flipX = true;
             }
-            lastPos = transform.position;
+            _lastPos = transform.position;
         }
     }
 }

@@ -1,5 +1,8 @@
+using System;
+using Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,21 +12,24 @@ public class GameManager : MonoBehaviour
 
     private long _totalCoins;
     private UIManager _uiManager;
-    
+
+    public Vector2 LastCheckPoint { set; get; }
+
     private void Awake()
     {
         if (Instance == null)
         {
+            LastCheckPoint = Checkpoint.UnsetCheckpoint;
             Instance = this;
             _uiManager = new UIManager(totalCoinsUi);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
     }
-
-    public void addCoins(long coins)
+    public void AddCoins(long coins)
     {
         _totalCoins += coins;
         _uiManager.UpdateCoins(_totalCoins);

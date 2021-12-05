@@ -1,4 +1,7 @@
+using System;
+using System.Linq;
 using Cinemachine;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,13 +28,13 @@ namespace Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Spike"))
+            if (other.CompareTag("Spike") || other.CompareTag("Enemy"))
             {
-                OnDamaged(other);
+                OnDamaged();
             }
         }
 
-        private void OnDamaged(Collider2D other)
+        private void OnDamaged()
         {
             _playerController.Disable();
             _spriteRenderer.color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.4f);
@@ -40,12 +43,14 @@ namespace Player
             _boxCollider2D.enabled = false;
             _virtualCamera1.m_Follow = null;
             _animator.SetTrigger("death");
-            Invoke(nameof(RestartLevel), 1.5f);
+            Invoke(nameof(LoadGameOver), 1.5f);
         }
 
-        private void RestartLevel()
+        private void LoadGameOver()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneLoader.LoadGameOverScreen();
         }
+        
+        
     }
 }

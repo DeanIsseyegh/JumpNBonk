@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/AssetStore/Pixel Adventure 1/Scenes/Demo.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 368a2f088c9e54e44a382dc58ec73ad2
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 4f66dde9a016839419ee6810bf0bfa7e
+  - enabled: 1
+    path: Assets/Scenes/GameOverScreen.unity
+    guid: 46b6a1e56a0c24a468e39efe5d4678d7
   m_configObjects: {}

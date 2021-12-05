@@ -13,7 +13,7 @@ namespace Collectibles
             if (other.CompareTag(collectibleName))
             {
                 Destroy(other.gameObject);
-                GameManager.Instance.addCoins(value);
+                GameManager.Instance.AddCoins(value);
             }
         }
     }
