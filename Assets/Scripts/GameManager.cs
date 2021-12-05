@@ -1,18 +1,11 @@
-using System;
 using Player;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [SerializeField] private TextMeshProUGUI totalCoinsUi;
-
     private long _totalCoins;
-    private UIManager _uiManager;
-
     public Vector2 LastCheckPoint { set; get; }
 
     private void Awake()
@@ -21,7 +14,6 @@ public class GameManager : MonoBehaviour
         {
             LastCheckPoint = Checkpoint.UnsetCheckpoint;
             Instance = this;
-            _uiManager = new UIManager(totalCoinsUi);
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -29,10 +21,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void AddCoins(long coins)
+    public void AddCoins(UIManager uiManager, long coins)
     {
         _totalCoins += coins;
-        _uiManager.UpdateCoins(_totalCoins);
+        uiManager.UpdateCoins(_totalCoins);
     }
 
+    public void ResetCoins()
+    {
+        _totalCoins = 0;
+    }
 }

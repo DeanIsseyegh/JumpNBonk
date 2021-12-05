@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class UIManager
+public class UIManager : MonoBehaviour
 {
-
-    private TextMeshProUGUI _totalCoins;
-    
-    public UIManager(TextMeshProUGUI totalCoins)
-    {
-        _totalCoins = totalCoins;
-    }
+    [SerializeField] private TextMeshProUGUI totalCoinsText;
 
     public void UpdateCoins(long totalCoins)
     {
-        _totalCoins.SetText(totalCoins.ToString());
+        totalCoinsText.SetText(totalCoins.ToString());
     }
 }

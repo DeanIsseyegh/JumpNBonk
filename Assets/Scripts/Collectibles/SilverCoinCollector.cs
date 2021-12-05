@@ -4,8 +4,8 @@ namespace Collectibles
     {
         public SilverCoinCollector()
         {
-            value = 5;
-            collectibleName = "SilverCoin";
+            Value = 5;
+            CollectibleName = "SilverCoin";
         }
     }
 }

@@ -5,8 +5,8 @@ namespace Collectibles
 
         public GoldCoinCollector()
         {
-            value = 10;
-            collectibleName = "GoldCoin";
+            Value = 10;
+            CollectibleName = "GoldCoin";
         }
     
     }

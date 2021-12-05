@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private bool _isDisabled;
     
     private float _axisInput;
-    private bool _isJumpPressed = true;
+    private bool _isJumpPressed;
 
     private BoxCollider2D _boxCollider2D;
 
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private int jumpForce = 600;
     [SerializeField] private int moveSpeed = 10;
+    private SoundManager _soundManager;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
+        _soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     void Update()
@@ -78,6 +80,7 @@ public class PlayerController : MonoBehaviour
         {
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _isJumpPressed = false;
+            _soundManager.PlayJumpSound();
         }
     }
 

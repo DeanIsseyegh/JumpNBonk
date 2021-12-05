@@ -14,6 +14,7 @@ namespace Player
         private BoxCollider2D _boxCollider2D;
         private PlayerController _playerController;
         private Animator _animator;
+        private SoundManager _soundManager;
 
         [SerializeField] private CinemachineVirtualCamera _virtualCamera1;
 
@@ -24,6 +25,7 @@ namespace Player
             _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
             _playerController = gameObject.GetComponent<PlayerController>();
             _animator = GetComponent<Animator>();
+            _soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -43,6 +45,9 @@ namespace Player
             _boxCollider2D.enabled = false;
             _virtualCamera1.m_Follow = null;
             _animator.SetTrigger("death");
+            GameManager.Instance.ResetCoins();
+            _soundManager.PlayPlayerDeath();
+            _soundManager.PlayPlayerDeathTune();
             Invoke(nameof(LoadGameOver), 1.5f);
         }
 
