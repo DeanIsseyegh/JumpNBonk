@@ -6,9 +6,11 @@ namespace Player
     public class Checkpoint : MonoBehaviour
     {
         public static readonly Vector2 UnsetCheckpoint = Vector2.zero;
+        private SoundManager _soundManager;
 
         private void Start()
         {
+            _soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundManager>();
             var lastCheckpoint = GameManager.Instance.LastCheckPoint;
             if (lastCheckpoint != UnsetCheckpoint)
             {
@@ -20,7 +22,10 @@ namespace Player
         {
             if (other.CompareTag("Checkpoint"))
             {
-                GameManager.Instance.LastCheckPoint = other.gameObject.transform.position;
+                var o = other.gameObject;
+                GameManager.Instance.LastCheckPoint = o.transform.position;
+                _soundManager.PlayCheckpointSound();
+                Destroy(o);
             }
         }
     }

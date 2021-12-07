@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip playerCollectCoinSound;
     [SerializeField] private AudioClip playerDeathSound;
     [SerializeField] private AudioClip playerDeathTune;
+    [SerializeField] private AudioClip checkpointSound;
+    [SerializeField] private AudioClip buttonClickSound;
     
     private void Start()
     {
@@ -40,5 +42,15 @@ public class SoundManager : MonoBehaviour
     public void PlayPlayerDeathTune()
     {
         _audioSource.PlayOneShot(playerDeathTune);
+    }
+    
+    public void PlayCheckpointSound()
+    {
+        _audioSource.PlayOneShot(checkpointSound);
+    }
+    
+    public void PlayButtonClickSound()
+    {
+        _audioSource.PlayOneShot(buttonClickSound);
     }
 }
