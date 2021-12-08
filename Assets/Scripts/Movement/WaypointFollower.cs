@@ -11,6 +11,7 @@ namespace Movement
 
         private void Update()
         {
+            if (_waypointIndex >= waypoints.Length) Debug.Log("ERROR HERE " + gameObject.name);
             Vector2 waypointPos = waypoints[_waypointIndex].transform.position;
             if (Vector2.Distance(waypointPos, transform.position) < .1f)
             {

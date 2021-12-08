@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
         if (_isJumpPressed && IsGrounded())
         {
+            _rb.velocity = new Vector2(_rb.velocity.x, 0f); //reset jump velocity to avoid current jump/fall speed affecting next jump
             _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             _isJumpPressed = false;
             _soundManager.PlayJumpSound();
