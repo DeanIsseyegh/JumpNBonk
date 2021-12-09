@@ -16,7 +16,7 @@ namespace Player
         private Animator _animator;
         private SoundManager _soundManager;
 
-        [SerializeField] private CinemachineVirtualCamera _virtualCamera1;
+        [SerializeField] private CinemachineVirtualCamera virtualCamera1;
 
         private void Start()
         {
@@ -43,7 +43,7 @@ namespace Player
             _playerRb.velocity = new Vector2(0, 0);
             _playerRb.AddForce(Vector2.up * 600, ForceMode2D.Impulse);
             _boxCollider2D.enabled = false;
-            _virtualCamera1.m_Follow = null;
+            virtualCamera1.m_Follow = null;
             _animator.SetTrigger("death");
             GameManager.Instance.ResetCoins();
             _soundManager.PlayPlayerDeath();

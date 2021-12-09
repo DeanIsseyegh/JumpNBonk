@@ -21,6 +21,7 @@ namespace Player
             {
                 _soundManager.PlayHeadBonkSound();
                 Destroy(other.gameObject);
+                _rb.velocity = new Vector2(_rb.velocity.x, 0f); //reset jump velocity to avoid current jump/fall speed affecting next jump
                 _rb.AddForce(Vector2.up * headBonkBounceSpeed, ForceMode2D.Impulse);
             }
         }

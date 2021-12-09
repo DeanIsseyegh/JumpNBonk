@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int jumpForce = 600;
     [SerializeField] private int moveSpeed = 10;
     private SoundManager _soundManager;
+    private static readonly int State = Animator.StringToHash("state");
 
     private void Start()
     {
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (_isDisabled) return;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             _isJumpPressed = true;
         }
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
             playerState = PlayerState.running;
         }
 
-        _animator.SetInteger("state", (int) playerState);
+        _animator.SetInteger(State, (int) playerState);
     }
 
     private void FixedUpdate()
@@ -95,5 +96,15 @@ public class PlayerController : MonoBehaviour
     public void Disable()
     {
         _isDisabled = true;
+    }
+
+    public void Enable()
+    {
+        _isDisabled = false;
+    }
+
+    public void StopPlayerXVelocity()
+    {
+        _rb.velocity = new Vector2(0, _rb.velocity.y);
     }
 }
