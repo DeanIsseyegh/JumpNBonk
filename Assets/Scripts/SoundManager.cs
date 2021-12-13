@@ -13,6 +13,10 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip playerDeathTune;
     [SerializeField] private AudioClip checkpointSound;
     [SerializeField] private AudioClip buttonClickSound;
+    [SerializeField] private AudioClip throwingSawSound;
+    [SerializeField] private AudioClip runIntoWallSound;
+    [SerializeField] private GameObject gameMusic;
+    [SerializeField] private GameObject gameCompleteMusic;
     
     private void Start()
     {
@@ -52,5 +56,21 @@ public class SoundManager : MonoBehaviour
     public void PlayButtonClickSound()
     {
         _audioSource.PlayOneShot(buttonClickSound);
+    }
+
+    public void PlayThrowingSawSound()
+    {
+        _audioSource.PlayOneShot(throwingSawSound);
+    }
+
+    public void PlayRunIntoWallSound()
+    {
+        _audioSource.PlayOneShot(runIntoWallSound);
+    }
+
+    public void PlayGameCompleteMusic()
+    {
+        gameMusic.SetActive(false);
+        gameCompleteMusic.SetActive(true);
     }
 }

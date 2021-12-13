@@ -1,4 +1,5 @@
 using System;
+using Boss;
 using UnityEngine;
 
 namespace Player
@@ -19,11 +20,17 @@ namespace Player
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
-                _soundManager.PlayHeadBonkSound();
+                DoHeadBonk();
                 Destroy(other.gameObject);
-                _rb.velocity = new Vector2(_rb.velocity.x, 0f); //reset jump velocity to avoid current jump/fall speed affecting next jump
-                _rb.AddForce(Vector2.up * headBonkBounceSpeed, ForceMode2D.Impulse);
             }
+        }
+
+        public void DoHeadBonk()
+        {
+            _soundManager.PlayHeadBonkSound();
+            _rb.velocity =
+                new Vector2(_rb.velocity.x, 0f); //reset jump velocity to avoid current jump/fall speed affecting next jump
+            _rb.AddForce(Vector2.up * headBonkBounceSpeed, ForceMode2D.Impulse);
         }
     }
 }

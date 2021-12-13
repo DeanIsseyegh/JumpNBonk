@@ -1,10 +1,8 @@
 * Make enemies give coins on head bonk
-* Add boss
 * Show "score" aka coins on gameover or completion
-
-
-* Add background music
+* Flesh out level
 
 
 
 [OPTIONAL] * Save and re-load/remove checkpoint flags that have been used up
+

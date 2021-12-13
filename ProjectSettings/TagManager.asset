@@ -12,6 +12,8 @@ TagManager:
   - Checkpoint
   - SoundManager
   - UIManager
+  - FrogBoss
+  - ArenaWall
   layers:
   - Default
   - TransparentFX
