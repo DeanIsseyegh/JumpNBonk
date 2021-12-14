@@ -328,6 +328,7 @@ MonoBehaviour:
   arenaWallRight: {fileID: 287676685}
   arenaWallLeft: {fileID: 17444994}
   throwingSaw: {fileID: 3228051783562087368, guid: 3c9c85b9238a99e4887a8653fe73c610, type: 3}
+  frogBossDefeated: {fileID: 0}
 --- !u!61 &12866811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20775,7 +20776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557725953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -128.4314, y: -5.9856477, z: -3.004013}
+  m_LocalPosition: {x: -15.308533, y: -0.71326303, z: -6.470726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 687174189}
@@ -23766,7 +23767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268322837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.761604, y: -0.9619385, z: -19.741722}
+  m_LocalPosition: {x: 101.36125, y: 4.3104463, z: -23.208435}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 805657421}
@@ -25565,7 +25566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699111994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.761604, y: 0.5710616, z: -9.741722}
+  m_LocalPosition: {x: 101.36125, y: 5.8434463, z: -13.208436}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26157,6 +26158,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5375773908452679352, guid: b90b176897bc4b74499a22c67715b84c, type: 3}
   m_PrefabInstance: {fileID: 1775349847}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1790071827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790071828}
+  - component: {fileID: 1790071829}
+  m_Layer: 0
+  m_Name: FrogBossDefeatedCutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1790071828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790071827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2007921281}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1790071829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790071827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6939030300fd4cc68a906f8526381bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1699111994}
+  arenaWallRight: {fileID: 287676685}
+  arenaWallLeft: {fileID: 17444994}
 --- !u!4 &1808151641 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4261412079815096814, guid: 41f83fc57b0a10f41ba8c00e453e82aa, type: 3}
@@ -146230,6 +146277,7 @@ Transform:
   - {fileID: 1257172941}
   - {fileID: 12866807}
   - {fileID: 119047406}
+  - {fileID: 1790071828}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

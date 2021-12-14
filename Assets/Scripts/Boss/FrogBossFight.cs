@@ -11,6 +11,8 @@ namespace Boss
         [SerializeField] private GameObject arenaWallRight;
         [SerializeField] private GameObject arenaWallLeft;
         [SerializeField] private GameObject throwingSaw;
+        [SerializeField] private GameObject frogBossDefeated;
+
         private Rigidbody2D _rb;
         private SpriteRenderer _renderer;
         private Animator _animator;
@@ -33,6 +35,7 @@ namespace Boss
 
         private void Update()
         {
+            KillBoss();
             if (_isBossDead) return;
             _frogBossState.Transition(this);
             _frogBossState.Update(Time.deltaTime); 
@@ -60,6 +63,7 @@ namespace Boss
             _renderer.color = new Color(Color.red.r, Color.red.g, Color.red.b, 0.4f);
              gameObject.GetComponents<BoxCollider2D>().ToList().ForEach(it => it.enabled = false);
              _soundManager.PlayGameCompleteMusic();
+             frogBossDefeated.SetActive(true);
         }
         
     }

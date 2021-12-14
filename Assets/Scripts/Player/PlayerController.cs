@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _renderer;
 
     private bool _isDisabled;
+    private bool _isControlsOnlyDisabled;
     
     private float _axisInput;
     private bool _isJumpPressed;
@@ -34,22 +35,30 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (_isDisabled) return;
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && !_isControlsOnlyDisabled)
         {
             _isJumpPressed = true;
         }
-        
-        _axisInput = Input.GetAxisRaw("Horizontal");
-        if (_axisInput > 0)
+
+        if (!_isControlsOnlyDisabled)
         {
-            _renderer.flipX = false;
-        }
-        else if (_axisInput < 0)
-        {
-            _renderer.flipX = true;
+            UpdateMove(Input.GetAxisRaw("Horizontal"));
         }
 
         UpdateAnimation();
+    }
+
+    public void UpdateMove(float dir)
+    {
+        _axisInput = dir;
+        if (dir > 0)
+        {
+            _renderer.flipX = false;
+        }
+        else if (dir < 0)
+        {
+            _renderer.flipX = true;
+        }
     }
 
     private void UpdateAnimation()
@@ -97,6 +106,10 @@ public class PlayerController : MonoBehaviour
     {
         _isDisabled = true;
     }
+    public void DisableControlsOnly()
+    {
+        _isControlsOnlyDisabled = true;
+    }
 
     public void Enable()
     {
@@ -106,5 +119,10 @@ public class PlayerController : MonoBehaviour
     public void StopPlayerXVelocity()
     {
         _rb.velocity = new Vector2(0, _rb.velocity.y);
+    }
+
+    public void Jump()
+    {
+        _isJumpPressed = true;
     }
 }

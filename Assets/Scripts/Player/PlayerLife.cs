@@ -36,6 +36,14 @@ namespace Player
             }
         }
 
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("FrogBoss"))
+            {
+                OnDamaged();
+            }
+        }
+
         private void OnDamaged()
         {
             _playerController.Disable();
