@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip throwingSawSound;
     [SerializeField] private AudioClip runIntoWallSound;
     [SerializeField] private GameObject gameMusic;
+    [SerializeField] private GameObject bossMusic;
     [SerializeField] private GameObject gameCompleteMusic;
     
     private void Start()
@@ -71,6 +72,14 @@ public class SoundManager : MonoBehaviour
     public void PlayGameCompleteMusic()
     {
         gameMusic.SetActive(false);
+        bossMusic.SetActive(false);
         gameCompleteMusic.SetActive(true);
+    }
+    
+    public void PlayBossMusic()
+    {
+        gameMusic.SetActive(false);
+        bossMusic.SetActive(true);
+        gameCompleteMusic.SetActive(false);
     }
 }

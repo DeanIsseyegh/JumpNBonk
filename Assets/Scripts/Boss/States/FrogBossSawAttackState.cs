@@ -56,7 +56,9 @@ namespace Boss.States
 
         private void ThrowSaw(Vector2 sawPos)
         {
-            GameObject throwingSaw = Object.Instantiate(_ctx.ThrowingSaw, sawPos,
+            float xBuffer = _facingDir * 1.5f;
+            Vector2 sawPosWithBuffer = new Vector2(sawPos.x + xBuffer, sawPos.y);
+            GameObject throwingSaw = Object.Instantiate(_ctx.ThrowingSaw, sawPosWithBuffer,
                 _ctx.Boss.transform.rotation);
             Move sawMovement = throwingSaw.GetComponent<Move>();
             sawMovement.XDirection = _facingDir;

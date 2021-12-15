@@ -13,7 +13,7 @@ namespace Boss.States
         public GameObject ArenaWallLeft { get; }
         public GameObject ThrowingSaw { get; }
         public SoundManager SoundManager { get; }
-        public int BossHp { get; private set; } = 1;
+        public int BossHp { get; private set; } = 2;
 
         public FrogBossStateCtx(GameObject boss, Rigidbody2D rb, Animator animator, GameObject player,
             SpriteRenderer spriteRenderer, GameObject arenaWallRight, GameObject arenaWallLeft, GameObject throwingSaw,

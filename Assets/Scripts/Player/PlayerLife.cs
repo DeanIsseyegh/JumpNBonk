@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Boss;
 using Cinemachine;
 using Unity.Collections;
 using UnityEngine;
@@ -40,7 +41,8 @@ namespace Player
         {
             if (other.gameObject.CompareTag("FrogBoss"))
             {
-                OnDamaged();
+                bool isVulnerable = other.gameObject.GetComponent<FrogBossFight>().IsInNonThreateningState();
+                if (!isVulnerable) OnDamaged();
             }
         }
 
@@ -53,7 +55,6 @@ namespace Player
             _boxCollider2D.enabled = false;
             virtualCamera1.m_Follow = null;
             _animator.SetTrigger("death");
-            GameManager.Instance.ResetCoins();
             _soundManager.PlayPlayerDeath();
             _soundManager.PlayPlayerDeathTune();
             Invoke(nameof(LoadGameOver), 1.5f);
@@ -63,7 +64,5 @@ namespace Player
         {
             SceneLoader.LoadGameOverScreen();
         }
-        
-        
     }
 }

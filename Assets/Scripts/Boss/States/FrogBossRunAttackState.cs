@@ -9,7 +9,7 @@ namespace Boss.States
         private float _attackLength = 4f;
         private float _restCountdown = 2f;
         private int _attacksLeft = 1;
-        private int _facingDir;
+        private readonly int _facingDir;
 
         public FrogBossRunAttackState(FrogBossStateCtx ctx, int facingDir)
         {

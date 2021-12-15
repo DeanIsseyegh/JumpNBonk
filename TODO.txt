@@ -1,8 +1,8 @@
-* Make enemies give coins on head bonk
-* Show "score" aka coins on gameover or completion
-* Flesh out level
+
+* Screen resolutions
 
 
 
 [OPTIONAL] * Save and re-load/remove checkpoint flags that have been used up
+[Optional] * Make enemies give coins on head bonk
 

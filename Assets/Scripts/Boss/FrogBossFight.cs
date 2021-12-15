@@ -32,10 +32,8 @@ namespace Boss
             _frogBossStateCtx = new FrogBossStateCtx(gameObject, _rb, _animator, player, _renderer, arenaWallRight, arenaWallLeft, throwingSaw, _soundManager);
             _frogBossState = new FrogBossRunAttackState(_frogBossStateCtx, FrogBossDirection.FacingLeft);
         }
-
         private void Update()
         {
-            KillBoss();
             if (_isBossDead) return;
             _frogBossState.Transition(this);
             _frogBossState.Update(Time.deltaTime); 
@@ -64,6 +62,11 @@ namespace Boss
              gameObject.GetComponents<BoxCollider2D>().ToList().ForEach(it => it.enabled = false);
              _soundManager.PlayGameCompleteMusic();
              frogBossDefeated.SetActive(true);
+        }
+
+        public bool IsInNonThreateningState()
+        {
+            return _frogBossState.GetType() == typeof(FrogBossVulnerableState) || _frogBossState.GetType() == typeof(FrogBossGetUpState);
         }
         
     }

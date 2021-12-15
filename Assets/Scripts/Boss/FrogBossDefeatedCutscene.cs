@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player;
+using UnityEngine;
 
 namespace Boss
 {
@@ -6,7 +7,8 @@ namespace Boss
     {
         [SerializeField] private GameObject player;
         [SerializeField] private GameObject arenaCenter;
-        
+        [SerializeField] private GameObject gameCompleteUI;
+
         private PlayerController _playerController;
 
         private bool _isCenterOfStage;
@@ -19,21 +21,24 @@ namespace Boss
 
         private void Update()
         {
-            if (!_isCenterOfStage)
+            if (_isCenterOfStage)
             {
-                var xDistanceToCenter = arenaCenter.transform.position.x - player.transform.position.x;
-                if (xDistanceToCenter < .1f)
+                _playerController.UpdateMove(0);
+                _playerController.Jump();
+                gameCompleteUI.SetActive(true);
+            }
+            else
+            {
+                var arenaCenterPos = arenaCenter.transform.position;
+                var playerPos = player.transform.position;
+                var xDistanceToCenter = arenaCenterPos.x - playerPos.x;
+                float playerMove = xDistanceToCenter > 0 ? 1 : -1;
+                _playerController.UpdateMove(playerMove);
+                if (xDistanceToCenter > -.1f && xDistanceToCenter < .1f)
                 {
                     _isCenterOfStage = true;
                 }
 
-                float dotToRight = Vector2.Dot(arenaCenter.transform.right, player.transform.right);
-                _playerController.UpdateMove(dotToRight);
-            }
-            else
-            {
-                _playerController.UpdateMove(0);
-                _playerController.Jump();
             }
         }
     }

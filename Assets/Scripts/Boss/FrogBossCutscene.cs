@@ -17,12 +17,14 @@ namespace Boss
         private Animator _playerAnimator;
         
         private static readonly int State = Animator.StringToHash("state");
+        private SoundManager _soundManager;
 
         private void Awake()
         {
             _cutsceneTriggerCollider = GetComponent<BoxCollider2D>();
             _playerController = player.GetComponent<PlayerController>();
             _playerAnimator = player.GetComponent<Animator>();
+            _soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundManager>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -36,6 +38,7 @@ namespace Boss
 
         private void StartFrogBossCutScene()
         {
+            _soundManager.PlayBossMusic();
             _playerController.StopPlayerXVelocity();
             _playerController.Disable();
             _playerAnimator.SetInteger(State, (int) PlayerState.idle);
