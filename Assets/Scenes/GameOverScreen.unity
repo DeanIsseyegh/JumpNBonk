@@ -812,7 +812,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603972236}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 475f4837af487ce4a9e68bb227455e4c, type: 3}
@@ -1352,6 +1352,7 @@ MonoBehaviour:
   throwingSawSound: {fileID: 0}
   runIntoWallSound: {fileID: 0}
   gameMusic: {fileID: 0}
+  bossMusic: {fileID: 0}
   gameCompleteMusic: {fileID: 0}
 --- !u!4 &1721505887
 Transform:
